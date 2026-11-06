@@ -1,10 +1,4 @@
 <Solution>
-  <Folder Name="/Backend/">
-    <File Path="SmartFinancialTrackerBackend/wrangler.toml" />
-  </Folder>
-  <Folder Name="/Backend/src/">
-    <File Path="SmartFinancialTrackerBackend/src/index.js" />
-  </Folder>
   <Project Path="SmartFinancialTracker/SmartFinancialTracker.csproj">
     <Deploy Solution="Debug|*" />
   </Project>
