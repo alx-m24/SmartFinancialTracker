@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SmartFinancialTracker.HomePage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource PageBg}"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <ScrollView>
+            <!-- Bottom padding leaves room for the floating + button -->
+            <VerticalStackLayout Padding="24,16,24,96" Spacing="18">
+
+                <!-- Header -->
+                <Grid ColumnDefinitions="*,Auto">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Make room for what matters." Style="{StaticResource Muted}" />
+                        <Label Text="Hello, Alex! 👋" Style="{StaticResource PageTitle}" />
+                    </VerticalStackLayout>
+                    <Border Grid.Column="1" BackgroundColor="{StaticResource BrandSoft}" StrokeThickness="0"
+                            StrokeShape="RoundRectangle 20" WidthRequest="40" HeightRequest="40"
+                            VerticalOptions="Center">
+                        <Label Text="AL" FontAttributes="Bold" TextColor="{StaticResource Brand}"
+                               HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                </Grid>
+
+                <!-- Balance -->
+                <Border BackgroundColor="{StaticResource Ink}" StrokeThickness="0"
+                        StrokeShape="RoundRectangle 20" Padding="20">
+                    <VerticalStackLayout Spacing="15">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Total balance" FontSize="13" TextColor="{StaticResource OnInkMuted}"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="✓ Bank Linked" FontSize="12"
+                                   TextColor="{StaticResource OnInkAccent}" VerticalOptions="Center" />
+                        </Grid>
+                        <Label Text="$1,245.50" FontSize="34" FontAttributes="Bold" TextColor="White" />
+                        <Grid ColumnDefinitions="*,*" Margin="0,12,0,0">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="↗ Monthly income" FontSize="12" TextColor="{StaticResource OnInkMuted}" />
+                                <Label Text="$2,095.50" FontSize="16" FontAttributes="Bold"
+                                       TextColor="{StaticResource OnInkAccent}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                <Label Text="↘ Monthly spending" FontSize="12" TextColor="{StaticResource OnInkMuted}" />
+                                <Label Text="$850.00" FontSize="16" FontAttributes="Bold" TextColor="#FCA5A5" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Budget -->
+                <Border Style="{StaticResource Card}">
+                    <VerticalStackLayout Spacing="11">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Monthly budget" Style="{StaticResource Strong}" />
+                            <Label Grid.Column="1" Text="October 2026" Style="{StaticResource Muted}" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="$850 / $1,000 spent" Style="{StaticResource Muted}" />
+                            <Label Grid.Column="1" Text="85%" FontSize="12" FontAttributes="Bold"
+                                   TextColor="{StaticResource WarnText}" />
+                        </Grid>
+                        <ProgressBar Progress="0.85" ProgressColor="{StaticResource Warn}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Alert -->
+                <Border BackgroundColor="{StaticResource WarnSoft}" StrokeThickness="0"
+                        StrokeShape="RoundRectangle 14" Padding="14">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                        <Label Text="⚠️" FontSize="20" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="Alert: You have reached 85% of your monthly spending limit!"
+                               FontSize="13" FontAttributes="Bold" TextColor="{StaticResource WarnText}"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+
+                <!-- Recent transactions -->
+                <VerticalStackLayout Spacing="8">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Recent Transactions" Style="{StaticResource SectionTitle}" />
+                        <Label Grid.Column="1" Text="View all" Style="{StaticResource Link}" VerticalOptions="Center" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10" HeightRequest="53">
+                        <Border Style="{StaticResource IconTile}" WidthRequest="38" HeightRequest="38">
+                            <Label Text="🛒" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                            <Label Text="Campus Fresh Market" Style="{StaticResource Strong}" />
+                            <HorizontalStackLayout Spacing="7">
+                                <Border Style="{StaticResource Chip}">
+                                    <Label Text="Groceries" FontSize="11" TextColor="{StaticResource Brand}" />
+                                </Border>
+                                <Label Text="Oct 28" Style="{StaticResource Muted}" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="-$42.80" Style="{StaticResource Strong}"
+                               TextColor="{StaticResource Danger}" VerticalOptions="Center" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10" HeightRequest="53">
+                        <Border Style="{StaticResource IconTile}" WidthRequest="38" HeightRequest="38">
+                            <Label Text="🏠" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                            <Label Text="Student accommodation" Style="{StaticResource Strong}" />
+                            <HorizontalStackLayout Spacing="7">
+                                <Border Style="{StaticResource Chip}">
+                                    <Label Text="Rent" FontSize="11" TextColor="{StaticResource Brand}" />
+                                </Border>
+                                <Label Text="Oct 27" Style="{StaticResource Muted}" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="-$500.00" Style="{StaticResource Strong}"
+                               TextColor="{StaticResource Danger}" VerticalOptions="Center" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10" HeightRequest="53">
+                        <Border Style="{StaticResource IconTile}" WidthRequest="38" HeightRequest="38">
+                            <Label Text="☕" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                            <Label Text="The Study Grind" Style="{StaticResource Strong}" />
+                            <HorizontalStackLayout Spacing="7">
+                                <Border Style="{StaticResource Chip}">
+                                    <Label Text="Coffee" FontSize="11" TextColor="{StaticResource Brand}" />
+                                </Border>
+                                <Label Text="Oct 26" Style="{StaticResource Muted}" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="-$12.50" Style="{StaticResource Strong}"
+                               TextColor="{StaticResource Danger}" VerticalOptions="Center" />
+                    </Grid>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Floating add button (the circle that overlapped the tab bar in the mock) -->
+        <Button Text="+" FontSize="28" TextColor="White" BackgroundColor="{StaticResource Brand}"
+                WidthRequest="56" HeightRequest="56" CornerRadius="28" Padding="0"
+                HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,20">
+            <Button.Shadow>
+                <Shadow Brush="Black" Opacity="0.25" Radius="10" Offset="0,4" />
+            </Button.Shadow>
+        </Button>
+    </Grid>
+</ContentPage>

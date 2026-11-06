@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SmartFinancialTracker.BillRemindersPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource PageBg}"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="24,14,24,24" Spacing="21">
+
+            <!-- Header -->
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="STAY ONE STEP AHEAD" Style="{StaticResource Eyebrow}" />
+                    <Label Text="Bills &amp; Reports" Style="{StaticResource PageTitle}" />
+                </VerticalStackLayout>
+                <Border Grid.Column="1" BackgroundColor="{StaticResource BrandSoft}" StrokeThickness="0"
+                        StrokeShape="RoundRectangle 20" WidthRequest="40" HeightRequest="40" VerticalOptions="Center">
+                    <Label Text="🔔" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+            </Grid>
+
+            <!-- Upcoming bills -->
+            <VerticalStackLayout Spacing="10">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="Upcoming Bill Reminders" Style="{StaticResource SectionTitle}" VerticalOptions="Center" />
+                    <Border Grid.Column="1" BackgroundColor="{StaticResource Danger}" StrokeThickness="0"
+                            StrokeShape="RoundRectangle 12" WidthRequest="23" HeightRequest="23">
+                        <Label Text="2" FontSize="12" FontAttributes="Bold" TextColor="White"
+                               HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                </Grid>
+
+                <Border Style="{StaticResource Card}" Padding="14">
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Border Style="{StaticResource IconTile}" WidthRequest="34" HeightRequest="34" VerticalOptions="Start">
+                            <Label Text="🎓" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
+                            <Label Text="Tuition Fee Installment" Style="{StaticResource Strong}" />
+                            <Label Text="Due in 3 days" FontSize="12" FontAttributes="Bold"
+                                   TextColor="{StaticResource Danger}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="7" HorizontalOptions="End">
+                            <Label Text="$250.00" Style="{StaticResource Strong}" HorizontalOptions="End" />
+                            <Button Text="Pay Now" Style="{StaticResource SmallButton}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Padding="14">
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Border Style="{StaticResource IconTile}" WidthRequest="34" HeightRequest="34" VerticalOptions="Start">
+                            <Label Text="📱" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
+                            <Label Text="Mobile Data Plan" Style="{StaticResource Strong}" />
+                            <Label Text="Due in 7 days" Style="{StaticResource Muted}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="7" HorizontalOptions="End">
+                            <Label Text="$35.00" Style="{StaticResource Strong}" HorizontalOptions="End" />
+                            <Button Text="Pay Now" Style="{StaticResource SmallButton}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Usage / breakdown -->
+            <VerticalStackLayout Spacing="13">
+                <Label Text="Usage Diagram &amp;&#10;Expense Breakdown" Style="{StaticResource SectionTitle}" FontSize="18" />
+
+                <Border Style="{StaticResource SegmentTrack}">
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="3">
+                        <Button Text="This Week" Style="{StaticResource SegOn}" HeightRequest="32" />
+                        <Button Grid.Column="1" Text="Last Month" Style="{StaticResource SegOff}" HeightRequest="32" />
+                        <Button Grid.Column="2" Text="Custom Range" Style="{StaticResource SegOff}" HeightRequest="32" />
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource Card}">
+                    <VerticalStackLayout Spacing="15">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout Spacing="3">
+                                <Label Text="Total spent · October 2026" Style="{StaticResource Muted}" />
+                                <Label Text="$850.00" FontSize="26" FontAttributes="Bold"
+                                       TextColor="{StaticResource TextMain}" />
+                            </VerticalStackLayout>
+                            <Border Grid.Column="1" BackgroundColor="{StaticResource BrandSoft}" StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 18" WidthRequest="36" HeightRequest="36"
+                                    VerticalOptions="Start">
+                                <Label Text="📊" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                        </Grid>
+
+                        <!-- Stacked bar: star widths = percentages -->
+                        <Border StrokeThickness="0" StrokeShape="RoundRectangle 6" HeightRequest="18">
+                            <Grid ColumnDefinitions="59*,21*,12*,8*" ColumnSpacing="2">
+                                <BoxView Color="{StaticResource Brand}" />
+                                <BoxView Grid.Column="1" Color="{StaticResource ChartBlue}" />
+                                <BoxView Grid.Column="2" Color="{StaticResource Warn}" />
+                                <BoxView Grid.Column="3" Color="{StaticResource ChartPink}" />
+                            </Grid>
+                        </Border>
+
+                        <VerticalStackLayout Spacing="10">
+                            <Grid ColumnDefinitions="Auto,*,Auto,52" ColumnSpacing="8">
+                                <BoxView Color="{StaticResource Brand}" WidthRequest="8" HeightRequest="8" CornerRadius="2" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="Rent" Style="{StaticResource Strong}" FontAttributes="None" />
+                                <Label Grid.Column="2" Text="59%" Style="{StaticResource Muted}" />
+                                <Label Grid.Column="3" Text="$500" Style="{StaticResource Strong}" HorizontalTextAlignment="End" />
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*,Auto,52" ColumnSpacing="8">
+                                <BoxView Color="{StaticResource ChartBlue}" WidthRequest="8" HeightRequest="8" CornerRadius="2" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="Groceries" Style="{StaticResource Strong}" FontAttributes="None" />
+                                <Label Grid.Column="2" Text="21%" Style="{StaticResource Muted}" />
+                                <Label Grid.Column="3" Text="$180" Style="{StaticResource Strong}" HorizontalTextAlignment="End" />
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*,Auto,52" ColumnSpacing="8">
+                                <BoxView Color="{StaticResource Warn}" WidthRequest="8" HeightRequest="8" CornerRadius="2" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="Food &amp; Dining" Style="{StaticResource Strong}" FontAttributes="None" />
+                                <Label Grid.Column="2" Text="12%" Style="{StaticResource Muted}" />
+                                <Label Grid.Column="3" Text="$100" Style="{StaticResource Strong}" HorizontalTextAlignment="End" />
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*,Auto,52" ColumnSpacing="8">
+                                <BoxView Color="{StaticResource ChartPink}" WidthRequest="8" HeightRequest="8" CornerRadius="2" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="Entertainment" Style="{StaticResource Strong}" FontAttributes="None" />
+                                <Label Grid.Column="2" Text="8%" Style="{StaticResource Muted}" />
+                                <Label Grid.Column="3" Text="$70" Style="{StaticResource Strong}" HorizontalTextAlignment="End" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

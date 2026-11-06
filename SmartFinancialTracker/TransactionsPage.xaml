@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SmartFinancialTracker.TransactionsPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource PageBg}"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="24,14,24,24" Spacing="22">
+
+            <!-- Header -->
+            <HorizontalStackLayout Spacing="14">
+                <Label Text="‹" FontSize="30" TextColor="{StaticResource TextMain}" VerticalOptions="Center" />
+                <Label Text="Add New Transaction" FontSize="20" FontAttributes="Bold"
+                       TextColor="{StaticResource TextMain}" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <!-- Expense / Income -->
+            <Border Style="{StaticResource SegmentTrack}" Padding="4">
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+                    <Button Text="Expense" Style="{StaticResource SegOn}" />
+                    <Button Grid.Column="1" Text="Income" Style="{StaticResource SegOff}" />
+                </Grid>
+            </Border>
+
+            <!-- Amount -->
+            <VerticalStackLayout Spacing="5" Padding="0,2">
+                <Label Text="How much did you spend?" Style="{StaticResource Muted}" HorizontalOptions="Center" />
+                <Entry Placeholder="$0.00" Keyboard="Numeric" FontSize="40" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" TextColor="{StaticResource TextMain}" />
+                <Label Text="USD · US Dollar" Style="{StaticResource Muted}" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- Category (static expanded list; swap for a Picker/CollectionView when wiring the backend) -->
+            <VerticalStackLayout Spacing="9">
+                <Label Text="Category" Style="{StaticResource Strong}" />
+                <Border Style="{StaticResource Card}" Padding="0">
+                    <VerticalStackLayout>
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10" Padding="15,0" HeightRequest="46"
+                              BackgroundColor="{StaticResource BrandSoft}">
+                            <Label Text="🍴" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Food &amp; Dining" Style="{StaticResource Strong}"
+                                   TextColor="{StaticResource Brand}" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Text="⌃" TextColor="{StaticResource Brand}" VerticalOptions="Center" />
+                        </Grid>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" Padding="15,0" HeightRequest="39">
+                            <Label Text="📚" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Tuition &amp; Books" FontSize="14"
+                                   TextColor="{StaticResource TextMain}" VerticalOptions="Center" />
+                        </Grid>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" Padding="15,0" HeightRequest="39">
+                            <Label Text="🏠" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Rent" FontSize="14"
+                                   TextColor="{StaticResource TextMain}" VerticalOptions="Center" />
+                        </Grid>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" Padding="15,0" HeightRequest="39">
+                            <Label Text="🎬" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Entertainment" FontSize="14"
+                                   TextColor="{StaticResource TextMain}" VerticalOptions="Center" />
+                        </Grid>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" Padding="15,0" HeightRequest="39">
+                            <Label Text="🛍️" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Shopping" FontSize="14"
+                                   TextColor="{StaticResource TextMain}" VerticalOptions="Center" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Receipt scan -->
+            <VerticalStackLayout Spacing="8">
+                <Border BackgroundColor="{StaticResource BrandSoft}" Stroke="{StaticResource Brand}"
+                        StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="15">
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="11">
+                        <Label Text="🧾" FontSize="24" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                            <Label Text="Scan Receipt (AI Auto-Extract)" Style="{StaticResource Strong}" />
+                            <Label Text="Less typing. More living." Style="{StaticResource Muted}" />
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="📷" FontSize="20" VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+                <Label Text="ⓘ  Max single transaction limit: $200" Style="{StaticResource Muted}"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <Button Text="Save Transaction" Style="{StaticResource PrimaryButton}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SmartFinancialTracker.LoginPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource PageBg}"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="24,40,24,24" Spacing="24">
+
+            <!-- Brand -->
+            <VerticalStackLayout Spacing="14" HorizontalOptions="Center">
+                <HorizontalStackLayout Spacing="9" HorizontalOptions="Center">
+                    <Border BackgroundColor="{StaticResource Brand}" StrokeThickness="0"
+                            StrokeShape="RoundRectangle 13" WidthRequest="42" HeightRequest="42">
+                        <Label Text="💰" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <Label Text="pocketwise" FontSize="28" FontAttributes="Bold"
+                           TextColor="{StaticResource TextMain}" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <Label Text="Smart Financial Tracker for Students" Style="{StaticResource Muted}"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- Hero -->
+            <Border BackgroundColor="{StaticResource Brand}" StrokeThickness="0"
+                    StrokeShape="RoundRectangle 20" Padding="20">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                    <VerticalStackLayout Spacing="6" VerticalOptions="Center">
+                        <Label Text="Small steps.&#10;Smarter money." FontSize="22"
+                               FontAttributes="Bold" TextColor="White" />
+                        <Label Text="Your next chapter starts here." FontSize="13"
+                               TextColor="{StaticResource BrandSoft}" />
+                    </VerticalStackLayout>
+                    <Border Grid.Column="1" BackgroundColor="#33FFFFFF" StrokeThickness="0"
+                            StrokeShape="RoundRectangle 30" WidthRequest="60" HeightRequest="60">
+                        <Label Text="🌱" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Form -->
+            <VerticalStackLayout Spacing="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Email" Style="{StaticResource Strong}" />
+                    <Border Style="{StaticResource Field}">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="✉️" VerticalOptions="Center" />
+                            <Entry Grid.Column="1" Placeholder="alex@university.edu" Keyboard="Email"
+                                   TextColor="{StaticResource TextMain}" />
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Password" Style="{StaticResource Strong}" />
+                    <Border Style="{StaticResource Field}">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                            <Label Text="🔒" VerticalOptions="Center" />
+                            <Entry Grid.Column="1" Placeholder="••••••••••" IsPassword="True"
+                                   TextColor="{StaticResource TextMain}" />
+                            <Label Grid.Column="2" Text="👁" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+
+                <Label Text="Forgot password?" Style="{StaticResource Link}" HorizontalOptions="End" />
+
+                <Button x:Name="SignInBtn" Clicked="SignInBtn_Clicked" Text="Sign In" Style="{StaticResource PrimaryButton}" />
+                <Button Text="🔐  Sign In with Face ID / Biometrics" Style="{StaticResource OutlineButton}" />
+            </VerticalStackLayout>
+
+            <!-- Language + currency -->
+            <VerticalStackLayout Spacing="16">
+
+                <!-- Language Selection Dropdown -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Language" Style="{StaticResource Strong}" />
+                    <Border Style="{StaticResource Field}">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="🌐" VerticalOptions="Center" />
+                            <Picker Grid.Column="1"
+                        Title="Select Language"
+                        SelectedItem="English">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>English</x:String>
+                                        <x:String>Spanish</x:String>
+                                        <x:String>French</x:String>
+                                        <x:String>German</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Currency Selection -->
+                <VerticalStackLayout Spacing="8">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Preferred Currency" Style="{StaticResource Strong}" />
+                        <Label Grid.Column="1" Text="{Binding Currency, StringFormat='{0} selected'}" Style="{StaticResource Muted}" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="8" RadioButtonGroup.GroupName="currency" RadioButtonGroup.SelectedValue="{Binding Currency}">
+                        <RadioButton Value="USD" Content="USD" IsChecked="True" Style="{StaticResource CurrencyChip}" />
+                        <RadioButton Grid.Column="1" Value="EUR" Content="EUR" Style="{StaticResource CurrencyChip}" />
+                        <RadioButton Grid.Column="2" Value="GBP" Content="GBP" Style="{StaticResource CurrencyChip}" />
+                        <RadioButton Grid.Column="3" Value="MYR" Content="MYR" Style="{StaticResource CurrencyChip}" />
+                    </Grid>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
