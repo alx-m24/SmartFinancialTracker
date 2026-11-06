@@ -1,4 +1,4 @@
-name = 'SmartFinancialTrackerBackend'
+name = 'smartfinancialtracker'
 main = "SmartFinancialTrackerBackend/src/index.js"
 compatibility_date = "2026-11-06"
 workers_dev = true
