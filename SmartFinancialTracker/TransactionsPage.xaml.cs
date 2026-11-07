@@ -74,7 +74,7 @@ public partial class TransactionsPage : ContentPage
                     CategoryIcon = isIncome ? "💵" : GetIconForDescription(tx.Description),
                     DisplayDate = tx.Date.ToString("MMM dd, yyyy"),
                     FormattedAmount = $"{(isIncome ? "+" : "-")}${(tx.TransactionAmount / 100.0):N2}",
-                    AmountColor = isIncome ? Color.FromArgb("#10B981") : Color.FromArgb("#EF4444")
+                    AmountColorHex = isIncome ? ("#10B981") : ("#EF4444")
                 });
             }
         }

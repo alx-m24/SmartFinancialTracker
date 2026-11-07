@@ -2,6 +2,8 @@
   <Folder Name="/Globals/">
     <File Path="wrangler.toml" />
   </Folder>
+  <Project Path="SmartFinancialTracker.Core/SmartFinancialTracker.Core.csproj" />
+  <Project Path="SmartFinancialTracker.Tests/SmartFinancialTracker.Tests.csproj" Id="13067694-dfc4-40dc-8052-e6aa3689501e" />
   <Project Path="SmartFinancialTracker/SmartFinancialTracker.csproj">
     <Deploy Solution="Debug|*" />
   </Project>

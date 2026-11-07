@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Graphics;
-
-namespace SmartFinancialTracker.Models;
+﻿namespace SmartFinancialTracker.Models;
 
 public class TransactionDisplayModel
 {
@@ -10,5 +8,5 @@ public class TransactionDisplayModel
     public string CategoryIcon { get; set; } = "🛒";
     public string DisplayDate { get; set; } = string.Empty;
     public string FormattedAmount { get; set; } = string.Empty;
-    public Color AmountColor { get; set; } = Colors.Red;
+    public string AmountColorHex { get; set; } = "#000000";
 }
