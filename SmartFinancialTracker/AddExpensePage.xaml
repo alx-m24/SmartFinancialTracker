@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SmartFinancialTracker.AddExpensePage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource PageBg}"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="24,14,24,24" Spacing="22">
+
+            <!-- Header -->
+            <Grid ColumnDefinitions="Auto,*">
+                <Label Text="‹" FontSize="30" TextColor="{StaticResource TextMain}" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped ="Back_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Grid.Column="1" Text="New Expense 💸" FontSize="20" FontAttributes="Bold"
+                       TextColor="{StaticResource TextMain}" VerticalOptions="Center" Margin="12,0,0,0" />
+            </Grid>
+
+            <!-- Amount Input -->
+            <VerticalStackLayout Spacing="5" Padding="0,4">
+                <Label Text="How much did you spend?" Style="{StaticResource Muted}" HorizontalOptions="Center" />
+                <Entry x:Name="AmountEntry" Placeholder="$0.00" Keyboard="Numeric" FontSize="44" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" TextColor="{StaticResource Danger}" />
+                <Label Text="USD · Single limit: $200.00" Style="{StaticResource Muted}" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- Category Selection -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Expense Category" Style="{StaticResource Strong}" />
+                <Border Style="{StaticResource Card}">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                        <Label Text="🏷️" VerticalOptions="Center" />
+                        <Picker x:Name="CategoryPicker" Grid.Column="1"
+                                Title="Select Category"
+                                ItemDisplayBinding="{Binding CategoryName}"
+                                TextColor="{StaticResource TextMain}" />
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Merchant / Description -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Merchant or Description" Style="{StaticResource Strong}" />
+                <Border Style="{StaticResource Field}">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                        <Label Text="🛒" VerticalOptions="Center" />
+                        <Entry x:Name="DescriptionEntry" Grid.Column="1" Placeholder="e.g. Campus Fresh Market" TextColor="{StaticResource TextMain}" />
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- AI Receipt Scan Banner -->
+            <Border BackgroundColor="{StaticResource BrandSoft}" Stroke="{StaticResource Brand}"
+                    StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="15">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped ="ScanReceipt_Tapped" />
+                </Border.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="11">
+                    <Label Text="🧾" FontSize="24" VerticalOptions="Center" />
+                    <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                        <Label Text="Scan Receipt (AI Auto-Extract)" Style="{StaticResource Strong}" />
+                        <Label Text="Auto-fill amount &amp; category" Style="{StaticResource Muted}" />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="2" Text="📷" FontSize="20" VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <!-- Submit Button -->
+            <Button x:Name="SaveExpenseBtn" Clicked="SaveExpenseBtn_Clicked" Text="Save Expense" Style="{StaticResource PrimaryButton}" BackgroundColor="{StaticResource Danger}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

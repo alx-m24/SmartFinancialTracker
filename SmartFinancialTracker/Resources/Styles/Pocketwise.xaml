@@ -10,6 +10,7 @@
     <Color x:Key="BrandSoft">#E3F2EF</Color>
     <Color x:Key="PageBg">#F4F7F6</Color>
     <Color x:Key="Surface">#FFFFFF</Color>
+    <Color x:Key="CardBg">#FFFFFF</Color>
     <Color x:Key="Ink">#0F2A33</Color>
     <Color x:Key="OnInkMuted">#9FB3B0</Color>
     <Color x:Key="OnInkAccent">#5EEAD4</Color>

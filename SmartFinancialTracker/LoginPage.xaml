@@ -45,7 +45,7 @@
                     <Border Style="{StaticResource Field}">
                         <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
                             <Label Text="✉️" VerticalOptions="Center" />
-                            <Entry Grid.Column="1" Placeholder="alex@university.edu" Keyboard="Email"
+                            <Entry x:Name="EmailEntry"  Grid.Column="1" Placeholder="alex@university.edu" Keyboard="Email"
                                    TextColor="{StaticResource TextMain}" />
                         </Grid>
                     </Border>
@@ -56,7 +56,7 @@
                     <Border Style="{StaticResource Field}">
                         <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
                             <Label Text="🔒" VerticalOptions="Center" />
-                            <Entry Grid.Column="1" Placeholder="••••••••••" IsPassword="True"
+                            <Entry x:Name="PasswordEntry" Grid.Column="1" Placeholder="••••••••••" IsPassword="True"
                                    TextColor="{StaticResource TextMain}" />
                             <Label Grid.Column="2" Text="👁" VerticalOptions="Center" />
                         </Grid>
@@ -66,7 +66,7 @@
                 <Label Text="Forgot password?" Style="{StaticResource Link}" HorizontalOptions="End" />
 
                 <Button x:Name="SignInBtn" Clicked="SignInBtn_Clicked" Text="Sign In" Style="{StaticResource PrimaryButton}" />
-                <Button Text="🔐  Sign In with Face ID / Biometrics" Style="{StaticResource OutlineButton}" />
+                <Button x:Name="SignupBtn" Clicked="SignupBtn_Clicked" Text="Sign Up" Style="{StaticResource OutlineButton}" />
             </VerticalStackLayout>
 
             <!-- Language + currency -->

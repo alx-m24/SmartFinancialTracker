@@ -1,5 +1,5 @@
 <Solution>
-  <Folder Name="/Solution Items/">
+  <Folder Name="/Globals/">
     <File Path="wrangler.toml" />
   </Folder>
   <Project Path="SmartFinancialTracker/SmartFinancialTracker.csproj">

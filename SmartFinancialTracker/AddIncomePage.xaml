@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SmartFinancialTracker.AddIncomePage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource PageBg}"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="24,14,24,24" Spacing="22">
+
+            <!-- Header -->
+            <Grid ColumnDefinitions="Auto,*">
+                <Label Text="‹" FontSize="30" TextColor="{StaticResource TextMain}" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped ="Back_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Grid.Column="1" Text="New Income 💰" FontSize="20" FontAttributes="Bold"
+                       TextColor="{StaticResource TextMain}" VerticalOptions="Center" Margin="12,0,0,0" />
+            </Grid>
+
+            <!-- Amount Input -->
+            <VerticalStackLayout Spacing="5" Padding="0,4">
+                <Label Text="How much did you receive?" Style="{StaticResource Muted}" HorizontalOptions="Center" />
+                <Entry x:Name="AmountEntry" Placeholder="$0.00" Keyboard="Numeric" FontSize="44" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" TextColor="#10B981" />
+                <Label Text="USD · Income Entry" Style="{StaticResource Muted}" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- Income Source Type -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Income Source" Style="{StaticResource Strong}" />
+                <Border Style="{StaticResource Card}">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                        <Label Text="💵" VerticalOptions="Center" />
+                        <Picker x:Name="SourcePicker" Grid.Column="1"
+                                Title="Select Source" TextColor="{StaticResource TextMain}">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Part-Time Job / Payroll</x:String>
+                                    <x:String>Allowance / Family Support</x:String>
+                                    <x:String>Scholarship / Financial Aid</x:String>
+                                    <x:String>Freelance / Side Gig</x:String>
+                                    <x:String>Other</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Description / Note -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Reference / Note" Style="{StaticResource Strong}" />
+                <Border Style="{StaticResource Field}">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                        <Label Text="📝" VerticalOptions="Center" />
+                        <Entry x:Name="DescriptionEntry" Grid.Column="1" Placeholder="e.g. Bi-weekly Tutoring Paycheck" TextColor="{StaticResource TextMain}" />
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Submit Button -->
+            <Button x:Name="SaveIncomeBtn" Clicked="SaveIncomeBtn_Clicked" Text="Save Income" Style="{StaticResource PrimaryButton}" BackgroundColor="#10B981" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

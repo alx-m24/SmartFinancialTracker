@@ -15,7 +15,7 @@
                 </VerticalStackLayout>
                 <Border Grid.Column="1" BackgroundColor="{StaticResource BrandSoft}" StrokeThickness="0"
                         StrokeShape="RoundRectangle 20" WidthRequest="40" HeightRequest="40" VerticalOptions="Center">
-                    <Label Text="🔔" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Label Text="📅" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
                 </Border>
             </Grid>
 
@@ -25,46 +25,41 @@
                     <Label Text="Upcoming Bill Reminders" Style="{StaticResource SectionTitle}" VerticalOptions="Center" />
                     <Border Grid.Column="1" BackgroundColor="{StaticResource Danger}" StrokeThickness="0"
                             StrokeShape="RoundRectangle 12" WidthRequest="23" HeightRequest="23">
-                        <Label Text="2" FontSize="12" FontAttributes="Bold" TextColor="White"
+                        <Label x:Name="UnpaidCountLabel" Text="0" FontSize="12" FontAttributes="Bold" TextColor="White"
                                HorizontalOptions="Center" VerticalOptions="Center" />
                     </Border>
                 </Grid>
 
-                <Border Style="{StaticResource Card}" Padding="14">
-                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
-                        <Border Style="{StaticResource IconTile}" WidthRequest="34" HeightRequest="34" VerticalOptions="Start">
-                            <Label Text="🎓" HorizontalOptions="Center" VerticalOptions="Center" />
-                        </Border>
-                        <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
-                            <Label Text="Tuition Fee Installment" Style="{StaticResource Strong}" />
-                            <Label Text="Due in 3 days" FontSize="12" FontAttributes="Bold"
-                                   TextColor="{StaticResource Danger}" />
+                <CollectionView x:Name="BillsListView" SelectionMode="None">
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout Padding="20" Spacing="6" HorizontalOptions="Center">
+                            <Label Text="🎉" FontSize="32" HorizontalOptions="Center" />
+                            <Label Text="No pending bill reminders!" Style="{StaticResource Muted}" HorizontalOptions="Center" />
                         </VerticalStackLayout>
-                        <VerticalStackLayout Grid.Column="2" Spacing="7" HorizontalOptions="End">
-                            <Label Text="$250.00" Style="{StaticResource Strong}" HorizontalOptions="End" />
-                            <Button Text="Pay Now" Style="{StaticResource SmallButton}" />
-                        </VerticalStackLayout>
-                    </Grid>
-                </Border>
-
-                <Border Style="{StaticResource Card}" Padding="14">
-                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
-                        <Border Style="{StaticResource IconTile}" WidthRequest="34" HeightRequest="34" VerticalOptions="Start">
-                            <Label Text="📱" HorizontalOptions="Center" VerticalOptions="Center" />
-                        </Border>
-                        <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
-                            <Label Text="Mobile Data Plan" Style="{StaticResource Strong}" />
-                            <Label Text="Due in 7 days" Style="{StaticResource Muted}" />
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Grid.Column="2" Spacing="7" HorizontalOptions="End">
-                            <Label Text="$35.00" Style="{StaticResource Strong}" HorizontalOptions="End" />
-                            <Button Text="Pay Now" Style="{StaticResource SmallButton}" />
-                        </VerticalStackLayout>
-                    </Grid>
-                </Border>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource Card}" Padding="14" Margin="0,0,0,10">
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                    <Border Style="{StaticResource IconTile}" WidthRequest="34" HeightRequest="34" VerticalOptions="Start">
+                                        <Label Text="{Binding BillIcon}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                        <Label Text="{Binding BillTitle}" Style="{StaticResource Strong}" />
+                                        <Label Text="{Binding DisplayDue}" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource Danger}" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="2" Spacing="6" HorizontalOptions="End">
+                                        <Label Text="{Binding DisplayAmount}" Style="{StaticResource Strong}" HorizontalOptions="End" />
+                                        <Button Text="Pay Now" Clicked="PayBillBtn_Clicked" CommandParameter="{Binding .}" Style="{StaticResource SmallButton}" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </VerticalStackLayout>
 
-            <!-- Usage / breakdown -->
+            <!-- Usage / Breakdown -->
             <VerticalStackLayout Spacing="13">
                 <Label Text="Usage Diagram &amp;&#10;Expense Breakdown" Style="{StaticResource SectionTitle}" FontSize="18" />
 
@@ -80,18 +75,16 @@
                     <VerticalStackLayout Spacing="15">
                         <Grid ColumnDefinitions="*,Auto">
                             <VerticalStackLayout Spacing="3">
-                                <Label Text="Total spent · October 2026" Style="{StaticResource Muted}" />
-                                <Label Text="$850.00" FontSize="26" FontAttributes="Bold"
-                                       TextColor="{StaticResource TextMain}" />
+                                <Label Text="Total Spent · Monthly Overview" Style="{StaticResource Muted}" />
+                                <Label x:Name="TotalSpentLabel" Text="$0.00" FontSize="26" FontAttributes="Bold" TextColor="{StaticResource TextMain}" />
                             </VerticalStackLayout>
                             <Border Grid.Column="1" BackgroundColor="{StaticResource BrandSoft}" StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 18" WidthRequest="36" HeightRequest="36"
-                                    VerticalOptions="Start">
+                                    StrokeShape="RoundRectangle 18" WidthRequest="36" HeightRequest="36" VerticalOptions="Start">
                                 <Label Text="📊" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Border>
                         </Grid>
 
-                        <!-- Stacked bar: star widths = percentages -->
+                        <!-- Stacked bar graph visualization -->
                         <Border StrokeThickness="0" StrokeShape="RoundRectangle 6" HeightRequest="18">
                             <Grid ColumnDefinitions="59*,21*,12*,8*" ColumnSpacing="2">
                                 <BoxView Color="{StaticResource Brand}" />
