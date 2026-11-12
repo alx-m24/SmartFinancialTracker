@@ -16,12 +16,6 @@ const CORS_HEADERS = {
     "Access-Control-Allow-Headers": "Content-Type",
 };
 
-// Tried in order: the main model twice (transient failures), then the cheaper fallback.
-const PRIMARY_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
-const FALLBACK_MODEL = "@cf/meta/llama-3.1-8b-instruct-fast";
-const MODEL_ATTEMPTS = [PRIMARY_MODEL, PRIMARY_MODEL, FALLBACK_MODEL];
-const RETRY_DELAY_MS = 500;
-
 function json(data, status = 200) {
     return new Response(JSON.stringify(data), {
         status,
